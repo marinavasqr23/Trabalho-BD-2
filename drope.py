@@ -14,24 +14,15 @@ cur = con.cursor()
 
 # Executando o comando DROP TABLE na tabelas e nas tabelas associadas que precisam ser excluídas
 
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.turma_aluno")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.turma_disciplina")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.projeto_aluno")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.avaliacao_turma")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.nota")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.avaliacao")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.aluno")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.turma_sala")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.professor_turma")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.material_turma")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.projeto_professor")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.disciplina_material")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.materia_professor")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.aluno")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.professor")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.disciplina")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.turma")
-cur.execute("DROP TABLE IF EXISTS projetobancodedados.curso")
+cur.execute( SELECT t.id AS turma_id, 
+    t.semestre, 
+    COUNT(a.id) AS quantidade_alunos
+FROM Turma t
+LEFT JOIN Aluno_Turma at ON t.aluno_id = at.turma_id
+LEFT JOIN Aluno a ON at.id_aluno = a.id
+GROUP BY t.id, t.semestre
+ORDER BY t.id;
+)
 
 
 # Confirmando a operação

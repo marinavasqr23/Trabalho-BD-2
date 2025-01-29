@@ -21,15 +21,7 @@ cur.execute("""
     );
 """)
 
-cur.execute("""
-    CREATE TABLE IF NOT EXISTS projetobancodedados.aluno (
-        id SERIAL PRIMARY KEY,
-        nome VARCHAR(100) NOT NULL,
-        curso_id INT NOT NULL,
-        semestre INT NOT NULL,
-        FOREIGN KEY (curso_id) REFERENCES projetobancodedados.curso(id)
-    );
-""")
+
 
 cur.execute("""
     CREATE TABLE IF NOT EXISTS projetobancodedados.aluno (
