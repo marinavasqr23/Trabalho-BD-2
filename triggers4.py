@@ -11,7 +11,7 @@ cur = con.cursor()
 
 try:
     cur.execute("""
-        INSERT INTO projetobancodedados.aluno_turma (id_aluno, id_turma) VALUES
+        INSERT INTO projetobancodedados.aluno_turma (aluno_id, turma_id) VALUES
         (1, 2),
         (1, 3),
         (1, 4);

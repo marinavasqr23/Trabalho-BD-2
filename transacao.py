@@ -10,7 +10,7 @@ con = psycopg.connect(
 cur = con.cursor()
 
 try:
-    cur.execute("BEGIN;")
+    cur.execute("BEGIN;") # Iniciando a transação
 
     cur.execute("""
         UPDATE projetobancodedados.turma

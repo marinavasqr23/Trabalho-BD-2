@@ -78,7 +78,6 @@ try:
         );
     """)
 
-    # Commit das alterações
     con.commit()
     print("Tabelas criadas com sucesso!")
 
