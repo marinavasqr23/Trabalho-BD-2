@@ -8,7 +8,7 @@ con = psycopg.connect(
 )
 
 cur = con.cursor()
-
+try:
 cur.execute("""
     SELECT t.codigo, COUNT(at.aluno_id) AS quantidade_alunos
     FROM projetobancodedados.turma t
@@ -45,5 +45,15 @@ result_qtd_professores = cur.fetchone()
 
 print(f"\nQuantidade de professores do curso 'Ciências da Computação': {result_qtd_professores[0]}")
 
+
+con.commit()
+    print("Consultas realizada com sucesso!")
+
+except Exception as e:
+    con.rollback()
+    print("Erro ao inserir dados:", e)
+
+finally:
+    
 cur.close()
 con.close()

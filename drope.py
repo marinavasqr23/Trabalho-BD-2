@@ -8,7 +8,7 @@ con = psycopg.connect(
 )
 
 cur = con.cursor()
-
+# Excluindo todas as tabelas necessárias pra adicionar as novas tabelas 
 
 cur.execute("DROP TABLE IF EXISTS projetobancodedados.turma_aluno")
 cur.execute("DROP TABLE IF EXISTS projetobancodedados.turma_disciplina")
