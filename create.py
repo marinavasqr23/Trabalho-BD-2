@@ -1,17 +1,14 @@
 import psycopg
 
-# Conectando Python ao PostgreSQL
 con = psycopg.connect(
-    host='200.129.44.249',   # Endereço IP do servidor PostgreSQL
-    dbname='496500',         # Nome do banco de dados
-    user='496500',           # Nome de usuário
-    password='496500'        # Senha
+    host='200.129.44.249',   
+    dbname='496500',        
+    user='496500',           
+    password='496500'        
 )
 
-# Criando um cursor
 cur = con.cursor()
 
-# Executando o comando CREATE TABLE para as Tabelas Curso, Aluno, Professor, Disciplina, Turma e Aluno_Turma.
 cur.execute("""
     CREATE TABLE IF NOT EXISTS projetobancodedados.curso (
         id SERIAL PRIMARY KEY,
@@ -81,12 +78,9 @@ cur.execute("""
 """)
 
 
-# Confirmando a operação
-con.commit()
 
-# Exibindo a mensagem de sucesso
+con.commit()
 print("Tabelas criadas com sucesso!")
 
-# Fechando a conexão
 cur.close()
 con.close()
